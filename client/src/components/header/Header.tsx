@@ -5,7 +5,6 @@ import NavItems from './navItems';
 
 interface Props {
   margin: string;
-  title: string;
 }
 
 const Header: React.FC<Props> = ({ margin }) => {

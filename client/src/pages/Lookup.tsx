@@ -1,19 +1,18 @@
 import { useState, useEffect, FormEvent } from 'react';
-import { NextPage } from 'next';
 import { TextField, Button, Grid, Typography, Input } from '@material-ui/core';
-import Layout from '@/components/Layout';
-import SkillsGrid from '@/components/SkillsGrid';
+import Layout from '../components/Layout';
+import SkillsGrid from '../components/SkillsGrid';
 
 interface Props {
   title: string;
 }
-interface Bosses {
-  [key: string]: {
-    rank: number;
-    kills: number;
-  };
-}
-const Lookup: NextPage<Props> = () => {
+// interface Bosses {
+//   [key: string]: {
+//     rank: number;
+//     kills: number;
+//   };
+// }
+const Lookup = () => {
       const [rsn, setRsn] = useState('');
      const [playerData, setPlayerData] = useState(null);
      const [bossKc, setBossKc] = useState(null);

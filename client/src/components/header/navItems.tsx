@@ -14,7 +14,7 @@ const NavItems: React.FC<Props> = ({ margin }) => {
     Products
   </div>
 </a>
-      <a href="/Lookup">
+      <a href="/hiscores">
   <div className='border rounded-md py-1 px-3 cursor-pointer hover:bg-gray-100' style={{ marginRight: margin }}>
         Get HiScores
       </div>

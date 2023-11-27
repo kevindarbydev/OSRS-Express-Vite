@@ -7,12 +7,12 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-   <div className="h-full w-full ">
-      <Header margin="4rem" title="Learning Next + Typescript" />
+    <>
+      <Header margin="4rem" />
       <main>
-        <div className='flex'>{children}</div>
+        <div className="flex">{children}</div>
       </main>
-    </div>
+    </>
   );
 };
 

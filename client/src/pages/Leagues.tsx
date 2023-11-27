@@ -1,68 +1,68 @@
-import { useState, useEffect, FormEvent } from 'react';
-import { NextPage } from 'next';
-import { TextField, Button, Grid, Typography, Input } from '@material-ui/core';
-import Layout from '@/components/Layout';
-import SkillsGrid from '@/components/SkillsGrid';
+import { useState, FormEvent } from "react";
+import { TextField, Button, Typography } from "@material-ui/core";
+import Layout from "../components/Layout";
 
-interface Props {
-  title: string;
+// interface Bosses {
+//   [key: string]: {
+//     rank: number;
+//     kills: number;
+//   };
+// }
+
+interface LeaguePointsRank {
+  rank: number;
+  score: number;
 }
-interface Bosses {
-  [key: string]: {
-    rank: number;
-    kills: number;
+const Leagues = () => {
+  const [rsn, setRsn] = useState("");
+  const [output, setOutput] = useState<LeaguePointsRank>();
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
   };
-}
-const Lookup: NextPage<Props> = () => {
-      const [rsn, setRsn] = useState('');
-     const [playerData, setPlayerData] = useState(null);  
-
-
-     const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-     }
-   const handleLookup = async () => {
+  const handleLookup = async () => {
     try {
-      const response = await fetch(`/api/leagues?rsn=${rsn}`);
+      const response = await fetch(`http://localhost:3030/leaguePoints/${rsn}`);
       const data = await response.json();
-      
-     
-      await console.dir(data.rank+ ", " + data.score);
+
+      setOutput(data);
     } catch (error) {
       console.error(error);
     }
   };
-
   return (
     <>
       <Layout>
-        <div className='flex flex-col items-center mt-2'>     
-        
-        <Typography variant="h5" className='underline text-blue-600'>Enter your RSN below</Typography>  
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <TextField
-          id='outlined-basic'
-          label='RSN'
-          variant='outlined'
-          style={{ width: '180px', margin: '1rem 0', display:'flex' }}
-          value={rsn}
-          onChange={(event) => setRsn(event.target.value)}
-        />
-        <Button variant="contained" onClick={handleLookup} type='submit'>Lookup stats </Button>
-        </form>
-      <div className='w-full flex'>
-            {playerData && (
+        <div className="flex flex-col items-center mt-2">
+          <Typography variant="h5" className="underline text-blue-600">
+            Enter your RSN below
+          </Typography>
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <TextField
+              id="outlined-basic"
+              label="RSN"
+              variant="outlined"
+              style={{ width: "180px", margin: "1rem 0", display: "flex" }}
+              value={rsn}
+              onChange={(event) => setRsn(event.target.value)}
+            />
+            <Button variant="contained" onClick={handleLookup} type="submit">
+              Lookup stats{" "}
+            </Button>
+          </form>
+          <div className="w-full flex">
+            {output &&(
               <>
-                <SkillsGrid skillsData={playerData} />            
+               
+               <p>Rank: {output?.rank}</p>         
+               <p>Points: {output?.score}</p>
               </>
             )}
-        </div>
+          </div>
         </div>
       </Layout>
     </>
   );
 };
 
-
-export default Lookup;
-
+export default Leagues;

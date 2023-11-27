@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react'
 import Layout from './components/Layout';
 import './App.css'
 
 function App() {
-  const [rsn, setRsn] = useState("");
+
 
   //TODO:
   //fix background
@@ -13,8 +12,7 @@ function App() {
   // maybe impl the skillcard comp
 
   return (
-    <>
-    
+    <>    
         <Layout>
           <div className="flex flex-col text-center">
             <p className="text-black opacity-75 text-xl my-4">
