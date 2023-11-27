@@ -1,7 +1,7 @@
 import { useState, FormEvent } from "react";
 import { TextField, Button, Typography } from "@material-ui/core";
 import Layout from "../components/Layout";
-
+import LeagueStats from "../components/LeagueStats";
 // interface Bosses {
 //   [key: string]: {
 //     rank: number;
@@ -9,13 +9,10 @@ import Layout from "../components/Layout";
 //   };
 // }
 
-interface LeaguePointsRank {
-  rank: number;
-  score: number;
-}
+
 const Leagues = () => {
   const [rsn, setRsn] = useState("");
-  const [output, setOutput] = useState<LeaguePointsRank>();
+  const [data, setData] = useState();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -24,8 +21,8 @@ const Leagues = () => {
     try {
       const response = await fetch(`http://localhost:3030/leaguePoints/${rsn}`);
       const data = await response.json();
-
-      setOutput(data);
+      setData(data);
+ 
     } catch (error) {
       console.error(error);
     }
@@ -51,13 +48,8 @@ const Leagues = () => {
             </Button>
           </form>
           <div className="w-full flex">
-            {output &&(
-              <>
-               
-               <p>Rank: {output?.rank}</p>         
-               <p>Points: {output?.score}</p>
-              </>
-            )}
+
+          <LeagueStats data={data}/>
           </div>
         </div>
       </Layout>

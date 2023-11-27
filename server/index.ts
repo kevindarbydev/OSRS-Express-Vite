@@ -10,6 +10,8 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
 });
 
+
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -24,8 +26,13 @@ app.get("/leaguePoints/:rsn", (req, res) => {
   hiscores
     .getStatsByGamemode(req.params.rsn, 'seasonal')
     .then((response) =>  {
-      //console.log(response)
-      res.send(JSON.stringify(response.leaguePoints));})
+      console.log(response)
+      var leagueStats  = {
+        skills: response.skills,
+        points: response.leaguePoints,
+        bosses: response.bosses
+      }
+      res.send(JSON.stringify(leagueStats));})
     .catch((err) => {
       res.status(404).send({ status: 404, error: err });
     });
