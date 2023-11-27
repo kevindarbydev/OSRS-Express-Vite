@@ -5,9 +5,6 @@ function App() {
 
 
   //TODO:
-  //fix background
-  //get router working
-  //seperate pages for regular vs seasonal
   // D3js chart for each
   // maybe impl the skillcard comp
 
