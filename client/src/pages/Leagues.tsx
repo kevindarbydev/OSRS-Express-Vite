@@ -49,7 +49,7 @@ const Leagues = () => {
           </form>
           <div className="w-full flex">
 
-          <LeagueStats data={data}/>
+          <LeagueStats />
           </div>
         </div>
       </Layout>
