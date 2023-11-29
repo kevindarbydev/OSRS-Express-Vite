@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './header/Header';
+import { Grid } from '@chakra-ui/react';
 
 interface Props {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     <>
       <Header margin="4rem" />
       <main>
-        <div className="flex">{children}</div>
+        <Grid className="flex">{children}</Grid>
       </main>
     </>
   );

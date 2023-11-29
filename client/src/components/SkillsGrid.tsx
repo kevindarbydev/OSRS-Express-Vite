@@ -12,15 +12,15 @@ interface Props {
 }
 const SkillsGrid = ({ skillsData }: Props) => {
   return (
-    <Grid>
-      {Object.entries(skillsData).map(([skillName, skillData]) => (
-        <>
+    <Grid margin="0 2rem 0 rem" h='400px' templateColumns="repeat(8, 1fr)" templateRows="repeat(4,1fr)" gap={6}>
+      <>
+        {Object.entries(skillsData).map(([skillName, skillData]) => (
           <SkillCard
             key={skillName}
             skill={{ name: skillName, data: skillData }}
           />
-        </>
-      ))}
+        ))}
+      </>
     </Grid>
   );
 };

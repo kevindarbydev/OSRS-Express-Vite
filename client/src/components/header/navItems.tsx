@@ -1,32 +1,17 @@
-import React from "react";
-
-interface Props {
-  margin: string;
-}
-
-const NavItems: React.FC<Props> = ({ margin }) => {
+const NavItems = () => {
   return (
-    <>
-      <a href="/products">
+    <>      
+      <a href="/Hiscores">
         <div
-          className="border rounded-md py-1 px-3 cursor-pointer hover:bg-gray-100"
-          style={{ marginRight: margin }}
-        >
-          Products
-        </div>
-      </a>
-      <a href="/hiscores">
-        <div
-          className="border rounded-md py-1 px-3 cursor-pointer hover:bg-gray-100"
-          style={{ marginRight: margin }}
+          className="border rounded-md py-1 px-3 cursor-pointer hover:bg-gray-100 lg:mr-8"
+         
         >
           Get HiScores
         </div>
       </a>
       <a href="/Leagues">
         <div
-          className="border rounded-md py-1 px-3 cursor-pointer hover:bg-gray-100"
-          style={{ marginRight: margin }}
+          className="border rounded-md py-1 px-3 cursor-pointer hover:bg-gray-100"         
         >
           Leagues HiScores
         </div>

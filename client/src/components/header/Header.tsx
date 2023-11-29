@@ -1,13 +1,7 @@
-import React from 'react';
-
 import Logo from './logo';
 import NavItems from './navItems';
 
-interface Props {
-  margin: string;
-}
-
-const Header: React.FC<Props> = ({ margin }) => {
+const Header = () => {
   return (
     <div style={{ backgroundColor: "rgba(51, 51, 51, 0.4)" }}>
       <nav className="flex flex-row items-center justify-between flex-1">
@@ -17,7 +11,7 @@ const Header: React.FC<Props> = ({ margin }) => {
          
         </a>
         <div className="flex-auto flex flex-row justify-center my-4">
-          <NavItems margin={margin} />
+          <NavItems />
         </div>
       </nav>
     </div>

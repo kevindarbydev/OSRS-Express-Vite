@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from "react";
 import Layout from "../components/Layout";
 import SkillsGrid from "../components/SkillsGrid";
-import { Input, Text, Button } from "@chakra-ui/react";
+import { Input, Text, Button, Grid } from "@chakra-ui/react";
 
 // interface Bosses {
 //   [key: string]: {
@@ -9,7 +9,7 @@ import { Input, Text, Button } from "@chakra-ui/react";
 //     kills: number;
 //   };
 // }
-const HiScores = () => {
+const Hiscores = () => {
   const [rsn, setRsn] = useState("");
   const [playerData, setPlayerData] = useState(null);
   const [bossKc, setBossKc] = useState(null);
@@ -44,29 +44,27 @@ const HiScores = () => {
               id="outlined-basic"
               placeholder="Enter your RSN"
               variant="outlined"
-              style={{ width: "180px", margin: "1rem 0", display: "flex" }}
               value={rsn}
               onChange={(event) => setRsn(event.target.value)}
             />
             <Button
-              variant="contained"
+              variant="outline"
+              colorScheme="blue"
               onClick={handleLookupHiScores}
               type="submit"
             >
               Lookup stats{" "}
             </Button>
           </form>
-          <div className="w-full flex">
-            {playerData && (
-              <>
-                <SkillsGrid skillsData={playerData} />
-              </>
-            )}
-          </div>
         </div>
+        {playerData && (
+          <>
+            <SkillsGrid skillsData={playerData} />
+          </>
+        )}
       </Layout>
     </>
   );
 };
 
-export default HiScores;
+export default Hiscores;

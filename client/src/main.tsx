@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { ChakraProvider } from "@chakra-ui/react";
 import './index.css'
-import Lookup from "./pages/HiScores.tsx";
+import Hiscores from "./pages/Hiscores.tsx";
 import Leagues from "./pages/Leagues.tsx";
 
 
@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="leagues" element={<Leagues />} />
-        <Route path="hiscores" element={<Lookup />} />
+        <Route path="HiScores" element={<Hiscores />} />
       </Routes>
     </BrowserRouter>
   </ChakraProvider>

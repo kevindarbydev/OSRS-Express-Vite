@@ -47,10 +47,8 @@ const Leagues = () => {
             <Button variant="contained" onClick={handleLookup} type="submit">
               Lookup stats{" "}
             </Button>
-          </form>
-          <div className="w-full flex">
-            <LeagueStats />
-          </div>
+          </form>      
+            <LeagueStats />        
         </div>
       </Layout>
     </>
