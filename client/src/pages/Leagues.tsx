@@ -1,14 +1,14 @@
 import { useState, FormEvent } from "react";
-import { TextField, Button, Typography } from "@material-ui/core";
+import { Input, Text, Button } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import LeagueStats from "../components/LeagueStats";
+
 // interface Bosses {
 //   [key: string]: {
 //     rank: number;
 //     kills: number;
 //   };
 // }
-
 
 const Leagues = () => {
   const [rsn, setRsn] = useState("");
@@ -22,7 +22,8 @@ const Leagues = () => {
       const response = await fetch(`http://localhost:3030/leaguePoints/${rsn}`);
       const data = await response.json();
       setData(data);
- 
+      //TODO: send data from API to d3 graph
+      // fix line in graph
     } catch (error) {
       console.error(error);
     }
@@ -31,13 +32,13 @@ const Leagues = () => {
     <>
       <Layout>
         <div className="flex flex-col items-center mt-2">
-          <Typography variant="h5" className="underline text-blue-600">
+          <Text fontSize="h5" className="underline text-blue-600">
             Enter your RSN below
-          </Typography>
+          </Text>
           <form onSubmit={(e) => handleSubmit(e)}>
-            <TextField
+            <Input
               id="outlined-basic"
-              label="RSN"
+              placeholder="RSN"
               variant="outlined"
               style={{ width: "180px", margin: "1rem 0", display: "flex" }}
               value={rsn}
@@ -48,8 +49,7 @@ const Leagues = () => {
             </Button>
           </form>
           <div className="w-full flex">
-
-          <LeagueStats />
+            <LeagueStats />
           </div>
         </div>
       </Layout>

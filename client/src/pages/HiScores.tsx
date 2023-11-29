@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from "react";
-import { TextField, Button, Typography } from "@material-ui/core";
 import Layout from "../components/Layout";
 import SkillsGrid from "../components/SkillsGrid";
+import { Input, Text, Button } from "@chakra-ui/react";
 
 // interface Bosses {
 //   [key: string]: {
@@ -9,7 +9,7 @@ import SkillsGrid from "../components/SkillsGrid";
 //     kills: number;
 //   };
 // }
-const Lookup = () => {
+const HiScores = () => {
   const [rsn, setRsn] = useState("");
   const [playerData, setPlayerData] = useState(null);
   const [bossKc, setBossKc] = useState(null);
@@ -36,13 +36,13 @@ const Lookup = () => {
     <>
       <Layout>
         <div className="flex flex-col items-center mt-2">
-          <Typography variant="h5" className="underline text-blue-600">
+          <Text fontSize="h5" className="underline text-blue-600">
             Enter your RSN below, MAIN
-          </Typography>
+          </Text>
           <form onSubmit={(e) => handleSubmit(e)}>
-            <TextField
+            <Input
               id="outlined-basic"
-              label="RSN"
+              placeholder="Enter your RSN"
               variant="outlined"
               style={{ width: "180px", margin: "1rem 0", display: "flex" }}
               value={rsn}
@@ -69,4 +69,4 @@ const Lookup = () => {
   );
 };
 
-export default Lookup;
+export default HiScores;

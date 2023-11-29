@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid } from "@chakra-ui/react";
 import SkillCard from "./SkillCard";
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 }
 const SkillsGrid = ({ skillsData }: Props) => {
   return (
-    <Grid container spacing={1} style={{ width: "55%", marginTop: "1.5rem" }}>
+    <Grid>
       {Object.entries(skillsData).map(([skillName, skillData]) => (
         <>
           <SkillCard

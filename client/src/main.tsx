@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { ChakraProvider } from "@chakra-ui/react";
 import './index.css'
-import Lookup from "./pages/Lookup.tsx";
+import Lookup from "./pages/HiScores.tsx";
 import Leagues from "./pages/Leagues.tsx";
 
 
