@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from "react";
 import Layout from "../components/Layout";
 import SkillsGrid from "../components/SkillsGrid";
-import { Input, Text, Button, Grid } from "@chakra-ui/react";
+import { Input, Text, Button, Grid, Box } from "@chakra-ui/react";
 
 // interface Bosses {
 //   [key: string]: {
@@ -25,7 +25,7 @@ const Hiscores = () => {
       if (!data) {
         console.log("Response failed!");
         return;
-      }
+      }     
       setPlayerData(data);
     } catch (error) {
       console.error(error);
@@ -35,31 +35,37 @@ const Hiscores = () => {
   return (
     <>
       <Layout>
-        <div className="flex flex-col items-center mt-2">
-          <Text fontSize="h5" className="underline text-blue-600">
+        <Box className="flex flex-col items-center mt-2">
+          <Text
+            fontSize="26"
+            className="underline text-blue-600"
+            marginBottom={2}
+          >
             Enter your RSN below, MAIN
           </Text>
           <form onSubmit={(e) => handleSubmit(e)}>
             <Input
-              id="outlined-basic"
               placeholder="Enter your RSN"
               variant="outlined"
+              marginBottom={2}
               value={rsn}
               onChange={(event) => setRsn(event.target.value)}
             />
-            <Button
-              variant="outline"
-              colorScheme="blue"
-              onClick={handleLookupHiScores}
-              type="submit"
-            >
-              Lookup stats{" "}
-            </Button>
+            <Box className="flex flex-col items-center">
+              <Button
+                variant="outline"
+                colorScheme="blue"
+                onClick={handleLookupHiScores}
+                type="submit"
+              >
+                Lookup stats{" "}
+              </Button>
+            </Box>
           </form>
-        </div>
+        </Box>
         {playerData && (
-          <>
-            <SkillsGrid skillsData={playerData} />
+          <>            
+              <SkillsGrid skillsData={playerData} rsn={rsn} />           
           </>
         )}
       </Layout>

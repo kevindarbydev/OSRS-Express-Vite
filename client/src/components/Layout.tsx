@@ -9,9 +9,9 @@ interface Props {
 const Layout: React.FC<Props> = ({ children }) => {
   return (
     <>
-      <Header margin="4rem" />
+      <Header />
       <main>
-        <Grid className="flex">{children}</Grid>
+        <Grid className="flex" >{children}</Grid>
       </main>
     </>
   );

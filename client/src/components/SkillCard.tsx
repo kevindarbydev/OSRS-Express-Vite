@@ -13,7 +13,7 @@ interface Props {
   };
 }
 
-const SkillCard = ({ skill }: Props) => {
+const SkillCard = ({ skill, rsn }: Props) => {
 
   
   return (
@@ -44,7 +44,8 @@ const SkillCard = ({ skill }: Props) => {
           <ProgressBar xp={skill.data.xp} level={skill.data.level} />
         </GridItem>
       ) : (
-        <GridItem backgroundColor="teal">
+        <GridItem backgroundColor="teal" padding={4}>
+          <Text fontSize="h2" fontWeight="bold">{rsn}</Text>
           <Text variant="h6">{skill.name}</Text>
           <Text variant="subtitle1">Rank: {skill.data.rank}</Text>
           <Text variant="subtitle1">Level: {skill.data.level}</Text>

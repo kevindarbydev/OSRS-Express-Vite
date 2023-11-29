@@ -8,15 +8,17 @@ interface Props {
       level: number;
       xp: number;
     };
-  };
+  },
+  rsn: string;
 }
-const SkillsGrid = ({ skillsData }: Props) => {
+const SkillsGrid = ({ skillsData, rsn }: Props) => {
   return (
-    <Grid margin="0 2rem 0 rem" h='400px' templateColumns="repeat(8, 1fr)" templateRows="repeat(4,1fr)" gap={6}>
+    <Grid marginTop={4} marginLeft={12} marginRight={12} h='750px' templateColumns="repeat(8, 1fr)" templateRows="repeat(4,1fr)" gap={6}>
       <>
         {Object.entries(skillsData).map(([skillName, skillData]) => (
           <SkillCard
             key={skillName}
+            rsn={rsn}
             skill={{ name: skillName, data: skillData }}
           />
         ))}
