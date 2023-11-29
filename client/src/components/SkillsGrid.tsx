@@ -8,12 +8,20 @@ interface Props {
       level: number;
       xp: number;
     };
-  },
+  };
   rsn: string;
 }
 const SkillsGrid = ({ skillsData, rsn }: Props) => {
   return (
-    <Grid marginTop={4} marginLeft={12} marginRight={12} h='750px' templateColumns="repeat(8, 1fr)" templateRows="repeat(4,1fr)" gap={6}>
+    <Grid
+      marginTop={4}
+      marginLeft={12}
+      marginRight={12}
+      h="750px"
+      templateColumns="repeat(8, 1fr)"
+      templateRows="repeat(4,1fr)"
+      gap={6}
+    >
       <>
         {Object.entries(skillsData).map(([skillName, skillData]) => (
           <SkillCard

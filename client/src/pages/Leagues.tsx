@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import { Input, Text, Button } from "@chakra-ui/react";
+import { Input, Text, Button, Box } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import LeagueStats from "../components/LeagueStats";
 
@@ -32,23 +32,36 @@ const Leagues = () => {
     <>
       <Layout>
         <div className="flex flex-col items-center mt-2">
-          <Text fontSize="h5" className="underline text-blue-600">
-            Enter your RSN below
+          <Text
+            fontSize="26"
+            className="underline text-blue-600"
+            marginBottom={2}
+          >
+            Enter your RSN below, Leagues
           </Text>
           <form onSubmit={(e) => handleSubmit(e)}>
             <Input
               id="outlined-basic"
-              placeholder="RSN"
+              placeholder="Enter your RSN"
               variant="outlined"
-              style={{ width: "180px", margin: "1rem 0", display: "flex" }}
               value={rsn}
               onChange={(event) => setRsn(event.target.value)}
             />
-            <Button variant="contained" onClick={handleLookup} type="submit">
-              Lookup stats{" "}
-            </Button>
-          </form>      
-            <LeagueStats />        
+            <Box className="flex flex-col items-center">
+              <Button
+                marginTop={2}
+                variant="outline"
+                colorScheme="blue"
+                onClick={handleLookup}
+                type="submit"
+              >
+                Lookup stats{" "}
+              </Button>
+            </Box>
+          </form>
+          <Box className="flex flex-col items-center">
+            <LeagueStats data={data} />
+          </Box>
         </div>
       </Layout>
     </>

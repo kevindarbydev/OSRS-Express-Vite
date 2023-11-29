@@ -2,12 +2,6 @@ import Layout from './components/Layout';
 import './App.css'
 
 function App() {
-
-
-  //TODO:
-  // D3js chart for each
-  // maybe impl the skillcard comp
-
   return (
     <>    
         <Layout>
@@ -20,8 +14,7 @@ function App() {
               This is an example of using Tailwind CSS in Next.js.
             </p>
           </div>
-        </Layout>
-     
+        </Layout>     
     </>
   );
 }

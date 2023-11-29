@@ -1,7 +1,7 @@
-import { useState, useEffect, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 import Layout from "../components/Layout";
 import SkillsGrid from "../components/SkillsGrid";
-import { Input, Text, Button, Grid, Box } from "@chakra-ui/react";
+import { Input, Text, Button, Box } from "@chakra-ui/react";
 
 // interface Bosses {
 //   [key: string]: {
@@ -12,7 +12,6 @@ import { Input, Text, Button, Grid, Box } from "@chakra-ui/react";
 const Hiscores = () => {
   const [rsn, setRsn] = useState("");
   const [playerData, setPlayerData] = useState(null);
-  const [bossKc, setBossKc] = useState(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -25,7 +24,7 @@ const Hiscores = () => {
       if (!data) {
         console.log("Response failed!");
         return;
-      }     
+      }
       setPlayerData(data);
     } catch (error) {
       console.error(error);
@@ -64,8 +63,8 @@ const Hiscores = () => {
           </form>
         </Box>
         {playerData && (
-          <>            
-              <SkillsGrid skillsData={playerData} rsn={rsn} />           
+          <>
+            <SkillsGrid skillsData={playerData} rsn={rsn} />
           </>
         )}
       </Layout>
