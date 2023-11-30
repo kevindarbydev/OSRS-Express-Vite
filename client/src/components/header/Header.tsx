@@ -1,5 +1,5 @@
-import Logo from './logo';
-import NavItems from './navItems';
+import Logo from './Logo';
+import NavItems from './NavItems';
 
 const Header = () => {
   return (

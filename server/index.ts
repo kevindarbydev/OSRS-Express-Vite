@@ -82,8 +82,36 @@ app.get("/leaguePoints/:rsn", (req: Request, res: Response) => {
     });
 });
 
-app.get("/stats/:rsn", (req: Request, res: Response) => {
+app.get("/:rsn", (req: Request, res: Response) => {
      console.log("Received request" + req.params.rsn)
+    const rsn = req.params.rsn;
+
+     db.all("SELECT date, points, rank FROM league_points WHERE rsn = ?", [rsn], (err: { message: string; }, rows: any[]) => {
+    if (err) {
+      console.error(err.message);
+      return res.status(500).send('Internal Server Error');
+    }
+
+    if (rows.length < 3) {
+      return res.status(400).send('Not enough data available');
+    }
+
+    const rankData = rows.map((row) => ({
+      date: row.date,
+      rank: row.rank,
+    }));
+
+    const pointData = rows.map((row) => ({
+      date: row.dates,
+      points: row.points
+    }));
+
+    res.json([rankData, pointData]);
+  });
+});
+
+app.get("/stats/:rsn", (req: Request, res: Response) => {
+  console.log("Received request " + req.params.rsn)
   hiscores
     .getStats(req.params.rsn)
     .then((response) => {res.send(JSON.stringify(response.main?.skills))})

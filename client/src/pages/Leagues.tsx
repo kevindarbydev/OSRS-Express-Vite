@@ -3,13 +3,6 @@ import { Input, Text, Button, Box } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import LeagueStats from "../components/LeagueStats";
 
-// interface Bosses {
-//   [key: string]: {
-//     rank: number;
-//     kills: number;
-//   };
-// }
-
 const Leagues = () => {
   const [rsn, setRsn] = useState("");
   const [data, setData] = useState();
@@ -21,9 +14,7 @@ const Leagues = () => {
     try {
       const response = await fetch(`http://localhost:3030/leaguePoints/${rsn}`);
       const data = await response.json();
-      setData(data);
-      //TODO: send data from API to d3 graph
-      // fix line in graph
+      setData(data);   
     } catch (error) {
       console.error(error);
     }
@@ -49,7 +40,7 @@ const Leagues = () => {
             />
             <Box className="flex flex-col items-center">
               <Button
-                marginTop={2}
+                marginY={4}
                 variant="outline"
                 colorScheme="blue"
                 onClick={handleLookup}
@@ -58,10 +49,8 @@ const Leagues = () => {
                 Lookup stats{" "}
               </Button>
             </Box>
-          </form>
-          <Box className="flex flex-col items-center">
-            <LeagueStats data={data} />
-          </Box>
+          </form>         
+            <LeagueStats data={data} />        
         </div>
       </Layout>
     </>
