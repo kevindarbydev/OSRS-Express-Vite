@@ -10,8 +10,7 @@ const LeagueStats = ({ data }) => {
 
   useEffect(() => {
     if (data){
-    console.log("LS comp received data!")
-    console.dir(data)
+   
     }
   }, [data])
 
