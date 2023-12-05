@@ -2,10 +2,11 @@ import { useState, FormEvent } from "react";
 import { Input, Text, Button, Box } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import LeagueStats from "../components/LeagueStats";
+import { CombinedData } from "../types";
 
 const Leagues = () => {
   const [rsn, setRsn] = useState("");
-  const [data, setData] = useState();
+  const [leaguesData, setLeaguesData] = useState<CombinedData>({});
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -13,8 +14,26 @@ const Leagues = () => {
   const handleLookup = async () => {
     try {
       const response = await fetch(`http://localhost:3030/leaguePoints/${rsn}`);
-      const data = await response.json();
-      setData(data);   
+      const leagueStats = await response.json();
+
+      const dataPoints = await fetchDataPoints();
+      const graphData = await dataPoints?.json();
+
+      setLeaguesData({
+        graphData: graphData,
+        leagueStats: leagueStats,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchDataPoints = async () => {
+    try {
+      if (rsn) {
+        const dataPoints = await fetch(`http://localhost:3030/${rsn}`);
+        return dataPoints;
+      }
     } catch (error) {
       console.error(error);
     }
@@ -49,8 +68,8 @@ const Leagues = () => {
                 Lookup stats{" "}
               </Button>
             </Box>
-          </form>         
-            <LeagueStats data={data} />        
+          </form>
+          { leaguesData && <LeagueStats data={leaguesData} /> }
         </div>
       </Layout>
     </>

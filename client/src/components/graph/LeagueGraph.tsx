@@ -1,28 +1,39 @@
 import Plot from "react-plotly.js";
 import { useEffect, useState } from "react";
+import { GraphData } from "../../types";
 
-interface IProps {
-  data: { date: string; value: number }[];
-}
 
-const LeagueGraph: React.FC<IProps> = ({ data }) => {
+const LeagueGraph = ({ data }: { data?: GraphData[] }) => {
   const [plotData, setPlotData] = useState<object>();
+  
   useEffect(() => {
-    if (data) {
-      const dates = data.map((entry) => entry.date);
-      const values = data.map((entry) => entry.value);
-
+    if (data?.length != 0) {
+      const dates = data.rankData.map((row) => row.date);
+      const rankValues = data.rankData.map((row) => row.rank);
+      const pointValues = data.pointData.map((row) => row.points);
+      console.log(dates);
       const trace1 = {
         x: dates,
-        y: values,
+        y: rankValues,
         type: "scatter",
+        mode: "lines+markers",
+        name: "Rank",
       };
-      const chartData = [trace1];
-      setPlotData(chartData);
 
-     
+      const trace2 = {
+        x: dates,
+        y: pointValues,
+        type: "scatter",
+        mode: "lines+markers",
+        name: "Points",
+      };
+
+      const chartData = [trace1, trace2];
+      setPlotData(chartData);
     }
   }, [data]);
+
   return <Plot data={plotData} />;
 };
+
 export default LeagueGraph;

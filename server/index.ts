@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 
 app.get("/leaguePoints/:rsn", (req: Request, res: Response) => {
     console.log("Received request " + req.params.rsn)
-    const formattedDate = new Date().toISOString();
+    const formattedDate = new Date().toDateString();
 
   hiscores
     .getStatsByGamemode(req.params.rsn, 'seasonal')
@@ -73,7 +73,7 @@ app.get("/leaguePoints/:rsn", (req: Request, res: Response) => {
             return;
           }
 
-          res.send(JSON.stringify(leagueStats));
+          res.status(200).send(JSON.stringify(leagueStats));
         });
       })
     })
@@ -102,11 +102,15 @@ app.get("/:rsn", (req: Request, res: Response) => {
     }));
 
     const pointData = rows.map((row) => ({
-      date: row.dates,
+      date: row.date,
       points: row.points
     }));
+    const result = {
+      rankData: rankData,
+      pointData: pointData
+    }
 
-    res.json([rankData, pointData]);
+    res.json(result);
   });
 });
 
