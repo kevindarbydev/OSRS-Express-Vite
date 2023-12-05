@@ -22,6 +22,7 @@ const Leagues = () => {
       setLeaguesData({
         graphData: graphData,
         leagueStats: leagueStats,
+        rsn: rsn
       });
     } catch (error) {
       console.error(error);

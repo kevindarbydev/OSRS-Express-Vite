@@ -11,7 +11,6 @@ const LeagueGraph = ({ data }: { data?: GraphData[] }) => {
       const dates = data.rankData.map((row) => row.date);
       const rankValues = data.rankData.map((row) => row.rank);
       const pointValues = data.pointData.map((row) => row.points);
-      console.log(dates);
       const trace1 = {
         x: dates,
         y: rankValues,

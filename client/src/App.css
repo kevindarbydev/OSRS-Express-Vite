@@ -2,7 +2,8 @@
   margin: 0 auto;   
   background-color: darkgray;
   height: 100vh;
-  overflow:hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .logo:hover {
