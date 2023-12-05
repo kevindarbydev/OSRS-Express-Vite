@@ -13,7 +13,7 @@ export type GraphData = {
 //TODO: fix any types
 export type CombinedData = {
   graphData?: GraphData[];
-  rsn: string;
+  rsn?: string;
   leagueStats?: {
     skills: any; 
     points: number;
@@ -22,6 +22,9 @@ export type CombinedData = {
   };
 };
 
-export type BossStats = {
-    
+export type BossData = {
+    bosses:{
+      name: string;
+      count: number;
+    }[];
 }
