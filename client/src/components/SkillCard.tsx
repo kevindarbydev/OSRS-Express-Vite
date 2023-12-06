@@ -1,5 +1,5 @@
 import ProgressBar from "./ProgressBar";
-import { Box, Grid, GridItem, Image, Text } from "@chakra-ui/react";
+import { Grid, GridItem, Image, Text } from "@chakra-ui/react";
 
 interface Props {
   skill: {
@@ -14,7 +14,6 @@ interface Props {
 }
 
 const SkillCard = ({ skill, rsn }: Props) => {
-
   
   return (
     <>

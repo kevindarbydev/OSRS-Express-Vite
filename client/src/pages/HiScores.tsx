@@ -2,7 +2,7 @@ import { useState, FormEvent } from "react";
 import Layout from "../components/Layout";
 import SkillsGrid from "../components/SkillsGrid";
 import { Input, Text, Button, Box } from "@chakra-ui/react";
-
+import StyledButton from "../components/StyledButton";
 // interface Bosses {
 //   [key: string]: {
 //     rank: number;
@@ -51,14 +51,13 @@ const Hiscores = () => {
               onChange={(event) => setRsn(event.target.value)}
             />
             <Box className="flex flex-col items-center">
-              <Button
+              <StyledButton
                 variant="outline"
                 colorScheme="blue"
                 onClick={handleLookupHiScores}
                 type="submit"
-              >
-                Lookup stats{" "}
-              </Button>
+                text="Lookup stats"
+              />
             </Box>
           </form>
         </Box>

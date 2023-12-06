@@ -1,4 +1,4 @@
-import { Grid, Box, Text } from "@chakra-ui/react";
+import { Grid, GridItem, Text } from "@chakra-ui/react";
 import { BossData } from "../types";
 
 const BossKc = ({ data }: { data?: BossData[] }) => {
@@ -9,13 +9,13 @@ const BossKc = ({ data }: { data?: BossData[] }) => {
   return (
     <Grid templateColumns="repeat(6, 1fr)" gap={4}>
       {sortedBosses.map(([bossName, { rank, score }]) => (
-        <Box key={bossName} p={4} borderWidth="1px" borderRadius="lg">
+        <GridItem key={bossName} p={4} borderWidth="1px" borderRadius="lg">
           <Text fontSize="lg" fontWeight="bold">
             {bossName}
           </Text>
           <Text>Rank: {rank}</Text>
           <Text>Score: {score}</Text>
-        </Box>
+        </GridItem>
       ))}
     </Grid>
   );
